@@ -1,2 +1,53 @@
-# golang
-Exploring GO Lang 
+# Go Language Learnings
+
+- GO is an open-source programming langague supported by Google.
+- GO lang has a single distribution/ installable that helps write, build and run Go programs.
+- Unlike Java, Go directly compiles into machine level code. Hence compiled code is not "run everywhere" code.
+- To support multi platform compatibility, Go provides cross-compilation feature. This means you can build into Linux compatible binary on Windows platform and vice versa.
+- Go programs are saved with .go extension
+- How to build/ compile Go program
+    - `go build -o <<Executable-name>> <<program-name.go>>`
+    - `go install <<program-name.go>>`
+        - This command builds and installs executable in `user/go/bin` folder for Windows
+        - If the above dir is in the Env path variable, executable can be run from anywhere
+- How to test Go program
+    - Create _test.go that contains functions names TestXXX with signature func (t *Testing.T)
+    - `go test`
+- How to run Go program
+    - `<<Go-executable-name>>`
+    - Or `go run <<program-name.go>>`
+- Go project structure
+    - Go programs are bundled into packages
+    - Go packages are bunded into module
+    - Go project may have one or more modules
+- How to create a module
+    - Run `go mod init <<module-name>>` from root folder 
+    - This creates a go.mod file in root folder
+    - External dependenices are included in go.mod file. Its kind of a build file
+    - Local dependencies are included by performaing local module replacements
+- Go workspaces
+    - Defines a workspace
+    - useful in scenarios where you're developing and testing changes across several modules simultaneously, without needing to push those changes to a remote repository or perform local module replacements in go.mod files.
+    - Create a go.work file at root location of the project
+    - Import modules in go.work using `use` keyword.
+    - Simplifies dependency management , enhances local development and flexibility
+- Cross-platform compilation
+    - set GOOS and GOARCH environment variable and then run go build command
+    - e.g  Build Linux compatiblle Go executable on Windows platform using following command
+        - `GOOS=linux GOARCH=amd64 go build <<executable-name>> <<program-name.go>>`
+
+- Data Structures
+    - Arrays (Static)
+    - Slices (Dynamaic Array)
+    - Maps (Key-value)
+    - Struct (User defined objects)
+    - Interfaces (OO)
+    - Channels (Go routines for Concurrancy)
+
+- Helpful commands
+    - go version
+    - go tool dist list
+    - go mod tidy
+    - go build
+    - go run
+    - go install
